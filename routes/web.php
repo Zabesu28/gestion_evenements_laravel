@@ -2,6 +2,14 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EvenementController;
+
+Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
+Route::get('/evenements/view/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
+Route::post('/evenements/{evenement}/inscrire', [EvenementController::class, 'inscrire'])->middleware('auth')->name('evenements.inscrire');
+Route::post('/evenements/{evenement}/desinscrire', [EvenementController::class, 'desinscrire'])->middleware('auth')->name('evenements.desinscrire');
+Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
+Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
 
 Route::get('/', function () {
     return view('welcome');
