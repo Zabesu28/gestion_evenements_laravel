@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Exécuter d'abord le RoleSeeder pour créer les rôles
+        $this->call(RoleSeeder::class);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Créer les utilisateurs et leur assigner des rôles
+        $admin = User::factory()->create([
+            'name' => 'Fugen l\'ancien',
+            'email' => 'chef@mail.fr',
+            'password' => Hash::make('password'),
         ]);
+        $admin->assignRole('Chef du village'); // Assigner le rôle 
+
+        $developpeur = User::factory()->create([
+            'name' => 'sakura',
+            'email' => 'organisateur@mail.fr',
+            'password' => Hash::make('password'),
+        ]);
+        $developpeur->assignRole('organisateur'); // Assigner le rôle 
+
+        $client = User::factory()->create([
+            'name' => 'Romanu',
+            'email' => 'chasseur@mail.fr',
+            'password' => Hash::make('password'),
+        ]);
+        $client->assignRole('chasseur'); // Assigner le rôle 
     }
 }
+
