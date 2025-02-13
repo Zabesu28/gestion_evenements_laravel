@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
     {
         // Création des roles
         $admin = Role::create(['name' => 'Chef du village']);
-        $developpeur = Role::create(['name' => 'organisateur']);
+        $developpeur = Role::create(['name' => 'Organisateur']);
         $client = Role::create(['name' => 'Chasseur']);
 
         // Création de permissions

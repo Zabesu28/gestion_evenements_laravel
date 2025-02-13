@@ -45,10 +45,14 @@
                         <x-dropdown-link :href="route('evenements.index')">
                             {{ __('Voir les quêtes') }}
                         </x-dropdown-link>
+                        @auth 
+                        @hasrole('Chef du village|Organisateur')
+                       
                         <x-dropdown-link :href="route('evenements.create')">
                             {{ __('Ajouter une quête') }}
                         </x-dropdown-link>
-                       
+                        @endhasrole
+                        @endauth
                     </x-slot>
                 </x-dropdown>
             </div>

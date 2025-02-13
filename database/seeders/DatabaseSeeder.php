@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'organisateur@mail.fr',
             'password' => Hash::make('password'),
         ]);
-        $developpeur->assignRole('organisateur'); // Assigner le rôle 
+        $developpeur->assignRole('Organisateur'); // Assigner le rôle 
 
         $client = User::factory()->create([
             'name' => 'Romanu',

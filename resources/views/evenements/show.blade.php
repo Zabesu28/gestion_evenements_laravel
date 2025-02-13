@@ -21,6 +21,7 @@
 
         <!-- Boutons d'inscription -->
         @auth
+        @hasrole('Chef du village|Chasseur')               
             <div class="mt-6">
                 @if(auth()->user()->evenements->contains($evenement->id))
                     <form action="{{ route('evenements.desinscrire', $evenement) }}" method="POST">
@@ -38,6 +39,7 @@
                     </form>
                 @endif
             </div>
+        @endhasrole
         @endauth
 
         <!-- Retour -->

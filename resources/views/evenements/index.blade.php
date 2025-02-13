@@ -40,6 +40,7 @@
                         </a>
 
                         @auth
+                        @hasrole('Chef du village|Chasseur')
                             @if(auth()->user()->evenements->contains($evenement->id))
                                 <form action="{{ route('evenements.desinscrire', $evenement) }}" method="POST">
                                     @csrf
@@ -55,6 +56,7 @@
                                     </button>
                                 </form>
                             @endif
+                        @endhasrole
                         @endauth
                     </div>
                 </div>
